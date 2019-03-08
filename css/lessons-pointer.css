@@ -1,0 +1,89 @@
+/*these styles were been broken by minifier, so I've moved them to the separate bundle*/
+.img-line {
+  position: relative;
+}
+
+.img-line:after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 1px;
+  background: #ccc;
+}
+
+.img-line .circle-block__text {
+  padding-right: 95px;
+}
+
+.img-line_right:after {
+  width: auto;
+  left: 120px;
+  right: -55px;
+  bottom: 15px;
+}
+
+.img-line_left:after {
+  width: auto;
+  right: 360px;
+  left: -55px;
+  bottom: 15px;
+}
+
+@media only screen and (max-width: 1200px){
+  .img-line_right:after{
+    right: -40px;
+  }
+  .img-line_left:after{
+    left: -40px;
+  }
+}
+
+@media only screen and (max-width: 1023px){
+  .img-line:after{
+    height: 20px;
+    width: 1px;
+  }
+  .img-line .circle-block__text{
+    padding-right: 0;
+  }
+  .img-line_right{
+    margin: 10px 0 20px 40px;
+  }
+  .img-line_right:after{
+    right: auto;
+    left: 50px;
+    top: calc(100% + 17px);
+  }
+  .img-line_left:after{
+    left: 50px;
+    top: calc(100% + 13px);
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .img-line_right{
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 599px){
+  .img-line{
+    margin: 20px 0;
+  }
+  .img-line_right{
+    margin-left: 0px;
+  }
+  .img-line_right:after{
+    top: calc(100% + 5px);
+  }
+  .img-line_left:after{
+    right: auto;
+    top: calc(100% + 5px);
+  }
+}
+
+@media only screen and (max-width: 1024px){
+  .img-line{
+    margin: 0;
+  }
+}
