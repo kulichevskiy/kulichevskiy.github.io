@@ -564,6 +564,10 @@ span.green, span.keyword {
   color: #859900;
 }
 
+span.cyan, span.string {
+  color: #2aa198;
+}
+
 span.blue, span.number {
   color: #268bd2;
 }
