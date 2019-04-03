@@ -33,6 +33,11 @@ ul, ol {
   list-style-type: none;
 }
 
+.blog ol {
+  margin: 0 0 3rem 3rem;
+  list-style-type: decimal;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -118,7 +123,7 @@ img {
 .blog .h3, .blog h3 {
   font-size: 1rem;
   padding: 10px 0 20px 0;
-  font-family: kgraphik-black, Arial, Helvetica, sans-serif;
+  font-family: graphik-black, Arial, Helvetica, sans-serif;
 }
 
 .serif {
@@ -157,6 +162,15 @@ img {
   font-family: kazimir-regular, Arial, Helvetica, sans-serif;
 }
 
+ .blog li {
+   font-size: .9rem;
+   color: #000;
+   font-weight: 400;
+   font-family: graphik-regular, Arial, Helvetica, sans-serif;
+   line-height: 2rem;
+ }
+
+
 .blog p + .h3, .blog h3 {
   padding-bottom: 1rem;
 }
@@ -185,7 +199,8 @@ img {
 }
 
 .blog strong {
-  font-family: graphik-black, Arial, Helvetica, sans-serif;
+  font-family: graphik-regular, Arial, Helvetica, sans-serif;
+  font-size: .9rem;
 }
 
 .blog .header {
@@ -595,6 +610,7 @@ span.red {
 }
 
 .blog .lead p, .blog blockquote p {
+  font-size: .9rem;
   font-family: graphik-regular;
 }
 
@@ -674,6 +690,12 @@ span.red {
   html {
     font-size: 16px;
   }
+
+
+  .blog div.avatar {
+    transform: translateX(0px);
+  }
+
 
   .blog span.author_name {
     transform: translateY(12px);
