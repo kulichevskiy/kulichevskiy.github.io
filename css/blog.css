@@ -710,7 +710,16 @@ span.red {
   .blog .h5, .blog h5{
     font-size: 1.3rem;
   }
-  .blog p, .blog pre {
+  .blog p {
+    padding-bottom: .5rem;
+  }
+
+  .blog ol {
+    margin: 0 0 3rem 1rem;
+  }
+
+  .blog pre {
+    font-size: .9rem;
     padding-bottom: .5rem;
   }
 
