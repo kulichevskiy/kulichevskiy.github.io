@@ -278,6 +278,22 @@ img {
   width: 350px;
 }
 
+}
+
+.row.backward::before, .backward__item_right::before {
+  content: " ";
+  display: table-row;
+}
+
+.container:after,.container:before,.row:after,.row:before{
+  content:" ";
+  display:table-row;}
+
+.container-fluid:after,.clearfix:before,.clearfix:after,.container-fluid:before {
+  content:" ";
+  display:table;
+}
+
 .h1, h1 {
   padding-bottom: 30px;
   padding-left: 2px;
@@ -1495,10 +1511,3 @@ div.avatar span {
     width: 100%;
   }
 }
-
-
-
-
-
-
-/*# sourceMappingURL=app.css.map */

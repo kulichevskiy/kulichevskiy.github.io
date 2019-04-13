@@ -5,7 +5,7 @@ $(document).ready(function() {
     var course_type = $('div.is-active > div.sale__text').html().replace(/\&nbsp;/g, ' ');
     var homework = $('div.is-active').attr('id');
 
-    var receipt = '{"customerContact": "' + email + '", "taxSystem": 1, "items":[{"quantity": 1, "price": {"amount": ' + sum + '.0},  "tax": 1, "text": "' + course_type + '"}]}';
+    var receipt = '{"customerContact": "' + email + '", "taxSystem": 2, "items":[{"quantity": 1, "price": {"amount": ' + sum + '.0},  "tax": 1, "text": "' + course_type + '"}]}';
 
     $('input[name = cps_email]').val(email);
     $('input[name = sum]').val(sum);
