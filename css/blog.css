@@ -42,10 +42,59 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
   width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+figure table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+tr {
+  font-family: graphik-regular;
+  font-size: .9rem;
+  line-height: inherit;
+}
+
+th {
+  font-family: graphik-black;
+  font-size: .9rem;
+  padding: .5rem 1.5rem .5rem 0;
+}
+
+td, th {
+  padding: .5rem 1.5rem .5rem 0;
 }
 
 html {
   box-sizing: border-box;
+}
+
+
+body .gist .gist-file, body .gist .gist-file .gist-data {
+  border: 0;
+}
+
+body .gist .blob-wrapper {
+  background-color: #fdf6e3;
+  padding: 1rem 0 1rem .5rem;
+  overflow-x: scroll;
+}
+
+body .gist table.highlight {
+  background-color: transparent;
+}
+
+
+body .gist .gist-meta, body .gist .js-line-number {
+  display: none;
+}
+
+body .gist .blob-code-inner {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: .9rem;
+  line-height: inherit;
 }
 
 *, *:before, *:after {
@@ -575,16 +624,34 @@ $green:     #859900;*/
   font-family: 'Anonymous Pro', monospace;
 }
 
-span.green, span.keyword {
+body gist table.highlight .pl-s1  /* constant */
+{
+  color:
+}
+
+
+
+
+
+body .gist table.highlight td, body .gist table.highlight .pl-v {
+  color: #000;
+}
+
+span.green, span.keyword, body .gist table.highlight .pl-k {
   color: #859900;
 }
 
-span.cyan, span.string {
+span.cyan, span.string, body .gist table.highlight .pl-s1, body .gist table.highlight .pl-s, body .gist table.highlight .pl-pds {
   color: #2aa198;
 }
 
-span.blue, span.number {
+span.blue, span.number, body .gist table.highlight .pl-c1 {
   color: #268bd2;
+}
+
+body .gist table.highlight .pl-ii {
+  color: inherit;
+  background-color: transparent;
 }
 
 span.orange {
@@ -676,6 +743,10 @@ span.red {
 @media only screen and (max-width: 960px){
   .blog .h5, .blog h5{
     line-height: 1.2;
+  }
+
+  tr, th {
+    font-size: .8rem;
   }
   /* .header{
     padding: 40px 0 350px;
