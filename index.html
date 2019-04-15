@@ -114,13 +114,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="https://gist.github.com/kulichevskiy/8bbddaf50f03229dd679464096cc5222.js"></script>
 
 <p>Вуаля. Видим, что, например, заказ <code>131884</code> случился 455 дней спустя первой покупки. <code>455 days</code>&nbsp;&mdash; это тип данных под названием &laquo;Timedelta&raquo;, его специально придумали, чтобы показывать временные промежутки.</p>
-<p>Чтобы отфильтровать заказы в&nbsp;первый год, добавим условие <code>&lt;= &#39;365 days&#39;</code>:</p>
+<p>Чтобы удалить поздние заказы, добавим условие <code>&lt;= &#39;365 days&#39;</code>:</p>
 <script src="https://gist.github.com/kulichevskiy/8f6fab19b19d71618d3e0caecc62c0c7.js"></script>
 
-<p>Сохраним результат в&nbsp;переменную <code>year_1_filter</code>, а&nbsp;затем отфильтруем ненужные заказы из&nbsp;когортного отчета и&nbsp;сохраним результат в&nbsp;переменную <code>year_1_orders</code>:</p>
+<p>Сохраним результат в&nbsp;переменную <code>year_1_filter</code>, отфильтруем ненужные заказы из&nbsp;когортного отчета и&nbsp;сохраним результат в&nbsp;переменную <code>year_1_orders</code>:</p>
 <script src="https://gist.github.com/kulichevskiy/254ca799d9002cef15f819c709a1b097.js"></script>
 
-<p>В&nbsp;датафрейме остались только заказы, сделанные когортами в&nbsp;течение года с&nbsp;первой покупки. Теперь сгруппируем заказы по&nbsp;дате первой покупки и&nbsp;посчитаем нужные метрики. Результат сохраним в&nbsp;переменную <code>cohorts</code>:</p>
+<p>В&nbsp;датафрейме остались только заказы, сделанные когортами в&nbsp;первый год после первой покупки. Теперь сгруппируем заказы по&nbsp;дате первой покупки и&nbsp;посчитаем нужные метрики. Результат сохраним в&nbsp;переменную <code>cohorts</code>:</p>
 <script src="https://gist.github.com/kulichevskiy/5ddefa4d38848a2ac4d4066ffdcda393.js"></script>
 
 <p>Последний шаг: посчитаем, сколько в&nbsp;среднем заказов и&nbsp;приносят клиенты в&nbsp;течение первого года. Для этого сначала просуммируем показатели каждой когорты, а&nbsp;затем усредним значения методом <code>mean()</code>:</p>
@@ -128,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Готово! В&nbsp;среднем за&nbsp;первый год когорты делают по&nbsp;4 заказа и&nbsp;приносят по&nbsp;$1949&nbsp;долларов.</p>
 <p>Есть много способов улучшить решение, например сгруппировать дневные когорты в&nbsp;недельные или месячные, визуализировать отчет в&nbsp;таблице или на&nbsp;графике. Наконец, интересно разбить когорты по&nbsp;каким-то признакам, например, отделить частных покупателей от&nbsp;компаний&nbsp;&mdash; наверняка их&nbsp;показатели существенно отличаются.</p>
-<p>Но&nbsp;об&nbsp;этом в&nbsp;следующих сериях. Подписывайтесь на&nbsp;<a href="https://t.me/kulichevskiy" target="_blank" rel="noopener">канал</a>, чтобы не&nbsp;пропустить. Ну&nbsp;и&nbsp;да, <a href="https://brainwashing.pro/marketing-python" target="_blank" rel="noopener">приходите учиться на&nbsp;курс</a>!</p>
+<p>Обо&nbsp;всем этом в&nbsp;следующих сериях. Подписывайтесь на&nbsp;<a href="https://t.me/kulichevskiy" target="_blank" rel="noopener">канал</a>, чтобы не&nbsp;пропустить. Ну&nbsp;и&nbsp;да, <a href="https://brainwashing.pro/marketing-python" target="_blank" rel="noopener">приходите учиться на&nbsp;курс</a>!</p>
 <p>Адиос!</p>
 <p><em>Cпасибо Наташе Асаул за&nbsp;то, что помогла отредактировать статью.</em></p>
 </div></div></div><div class="container container_margin"><div class="row"><div class="col-md-8 col-sm-12"><h1><a href="/blog/pandas/">Аналитикам: большая шпаргалка по Pandas</a></h1><blockquote>
