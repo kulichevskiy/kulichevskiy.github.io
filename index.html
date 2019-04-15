@@ -2,7 +2,136 @@
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MS47VNR');</script><title>Алексей Куличевский, аналитик</title></head><body><!-- - Google Tag Manager (noscript)--><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS47VNR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- - End Google Tag Manager (noscript)--><div class="container"><div id="content-outer"><div id="content-inner"><div class="blog"><div class="container"><div class="row"><div class="col-md-8 col-sm-12"><div class="avatar"><span><img src="https://s.gravatar.com/avatar/e574dc154e694d72dc40e1dc9be17c32?s=80" width="40px" height="40px"></span><span class="author_name">Алексей Куличевский            <span style="font-family: graphik-regular;">Блог · <a class="header" href="https://t.me/kulichevskiy" target="_blank">Телеграм</a> · <a class="header" href="/courses/data-1">Курс</a></span></span></div></div></div></div><div id="recent-posts"><div class="container container_margin"><div class="row"><div class="col-md-8 col-sm-12"><h1><a href="/blog/pandas/">Аналитикам: большая шпаргалка по Pandas</a></h1><blockquote>
+})(window,document,'script','dataLayer','GTM-MS47VNR');</script><title>Алексей Куличевский, аналитик</title></head><body><!-- - Google Tag Manager (noscript)--><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS47VNR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- - End Google Tag Manager (noscript)--><div class="container"><div id="content-outer"><div id="content-inner"><div class="blog"><div class="container"><div class="row"><div class="col-md-8 col-sm-12"><div class="avatar"><span><img src="https://s.gravatar.com/avatar/e574dc154e694d72dc40e1dc9be17c32?s=80" width="40px" height="40px"></span><span class="author_name">Алексей Куличевский            <span style="font-family: graphik-regular;">Блог · <a class="header" href="https://t.me/kulichevskiy" target="_blank">Телеграм</a> · <a class="header" href="/courses/data-1">Курс</a></span></span></div></div></div></div><div id="recent-posts"><div class="container container_margin"><div class="row"><div class="col-md-8 col-sm-12"><h1><a href="/blog/pandas-cohorts/">Когортный анализ в Pandas</a></h1><blockquote>
+<p>Привет! Продолжем изучать Pandas. В&nbsp;прошлый раз я&nbsp;<a href="http://smysl.io/blog/pandas/">рассказал о&nbsp;возможностях библиотеки </a>, а&nbsp;сегодня покажу, как с&nbsp;её помощью делать когортный анализ.</p>
+</blockquote>
+<p>Прежде всего, вспомним, что такое когорты и&nbsp;как их&nbsp;анализировать.</p>
+<div style="padding: 1rem 1rem 0 1rem;"><p style="font-family: graphik-regular; font-size: .9rem;">Когорта&nbsp;&mdash; это группа людей, которая совершила нужное действие в&nbsp;определенный промежуток времени.</p><p>Когортный анализ&nbsp;&mdash; это наблюдение за&nbsp;когортами. Выбираем одну или несколько метрик, измеряем их&nbsp;и&nbsp;делаем выводы.</p><br></div>
+
+<p>Например, социологи могут отслеживать, сколько людей, родившихся в&nbsp;1980 году, получили высшее образование. Когорта здесь&nbsp;&mdash; те, кто родились в&nbsp;1980 году. Метрика&nbsp;&mdash; доля людей с&nbsp;высшим образованием.</p>
+<p>Еще пример: маркетологи хотят узнать, сколько заказов и&nbsp;выручки принесли пользователи, совершившие свой первый заказ год назад. Теперь когорта&nbsp;&mdash; это прошлогодние покупатели, а&nbsp;метрики&nbsp;&mdash; количество заказов и&nbsp;выручка.</p>
+<p>Получается, когортный анализ состоит из&nbsp;трех шагов: определения нужного действия и&nbsp;временного промежутка когорты и&nbsp;выбора метрик для отслеживания:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Действие</th>
+<th style="text-align:left">Время</th>
+<th style="text-align:left">Метрика</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Родились</td>
+<td style="text-align:left">В&nbsp;1980 году</td>
+<td style="text-align:left">% людей с&nbsp;высшим образованием</td>
+</tr>
+<tr>
+<td style="text-align:left">Впервые <nobr>что-то</nobr> купили</td>
+<td style="text-align:left">Год назад</td>
+<td style="text-align:left">Количество заказов и&nbsp;выручка</td>
+</tr>
+<tr>
+<td style="text-align:left">Установили приложение</td>
+<td style="text-align:left">Неделю назад</td>
+<td style="text-align:left">% пользователей, открывших приложение еще раз</td>
+</tr>
+</tbody>
+</table>
+<p>Когорты можно сравнивать между собой. Например, маркетологи измеряют, сколько заказов обычно делают пользователи в&nbsp;течение месяца после первой покупки и&nbsp;смотрят динамику:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Месяц</th>
+<th style="text-align:right">Клиенты</th>
+<th style="text-align:right">Покупок в&nbsp;1й месяц</th>
+<th style="text-align:right">Покупок на&nbsp;клиента</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Январь 2018</td>
+<td style="text-align:right">134</td>
+<td style="text-align:right">161</td>
+<td style="text-align:right">1.20</td>
+</tr>
+<tr>
+<td style="text-align:left">Февраль 2018</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">194</td>
+<td style="text-align:right">1.18</td>
+</tr>
+<tr>
+<td style="text-align:left">Март 2018</td>
+<td style="text-align:right"><span class="green"><strong>193</strong></span></td>
+<td style="text-align:right"><span class="green"><strong>200</strong></span></td>
+<td style="text-align:right"><span class="red"><strong>1.03</strong></span></td>
+</tr>
+</tbody>
+</table>
+<p>Общее количество клиентов и&nbsp;покупок вырасло&nbsp;&mdash; приятно. Но, сравнив когорты, видим, что с&nbsp;среднем клиенты стали покупать реже&nbsp;&mdash; тревожный знак.</p>
+<p>Ок, теперь мы&nbsp;готовы к&nbsp;тому, чтобы научиться делать когортный анализ с&nbsp;помощью Pandas. Для наглядности решим задачу.</p>
+<h2 id="Задача"><a href="#Задача" class="headerlink" title="Задача"></a>Задача</h2><p>Допустим, мы&nbsp;работаем в&nbsp;<nobr>интернет-магазине</nobr> и&nbsp;хотим понять, сколько заказов и&nbsp;денег клиенты приносят в&nbsp;течение года после первой покупки. Для этого у&nbsp;нас есть <a href="http://smysl.io/data/pandas/orders.csv">данные о&nbsp;заказах</a>:</p>
+<script src="https://gist.github.com/kulichevskiy/867460c17cb66d5860cebd5964b231ec.js"></script>
+
+<p>Каждая строка таблицы <code>orders</code>&nbsp;&mdash; это покупка. Мы&nbsp;знаем, когда она произошла, кто её сделал и&nbsp;сколько денег она принесла в&nbsp;магазин. Дата заказа лежит в&nbsp;поле <code>order_date</code>, номер покупателя&nbsp;&mdash; в&nbsp;<code>customer_id</code>, а&nbsp;выручка&nbsp;&mdash; в&nbsp;<code>sales</code>.</p>
+<p>Часто бывает, что даты загружаются в&nbsp;виде текста. Преобразим колонку <code>order_date</code> из&nbsp;текста в&nbsp;дату:</p>
+<script src="https://gist.github.com/kulichevskiy/5f49b1d5a58884b4f4666d28a1fc37c2.js"></script>
+
+<p>Данные перед нами, теперь можно с&nbsp;ними работать. Начнем с&nbsp;простого: выясним, сколько всего в&nbsp;магазине было покупок и&nbsp;выручки.</p>
+<h2 id="Считаем-покупки-и-nbsp-выручку"><a href="#Считаем-покупки-и-nbsp-выручку" class="headerlink" title="Считаем покупки и&nbsp;выручку"></a>Считаем покупки и&nbsp;выручку</h2><p>Чтобы посчитать общую выручку, просуммируем колонку <code>sales</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/5b510516c6cc33179c743d348b9bc01b.js"></script>
+
+<p>Количество заказов можно посчитать с&nbsp;помощью этой&nbsp;же колонки, но&nbsp;вместо суммы используем метод <code>count()</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/ef1321544a45b172c589062bf9d0a396.js"></script>
+
+<p>Теперь посчитаем обе метрики для каждого пользователя. Сгруппируем датафрейм по&nbsp;полю <code>customer_id</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/6c754554a2b96e7fe9ce8530042059f5.js"></script>
+
+<p>Видим, например, что пользователь AA-10315 сделал 5 заказов и&nbsp;принес $5563 выручки.</p>
+<p>Идём дальше. Чтобы построить когорты, нам нужно сгруппировать клиентов по&nbsp;дате их&nbsp;первой покупки. В&nbsp;данных нет такого поля, значит, нужно его посчитать.</p>
+<h2 id="Считаем-дату-первой-покупки"><a href="#Считаем-дату-первой-покупки" class="headerlink" title="Считаем дату первой покупки"></a>Считаем дату первой покупки</h2><p>Чтобы вычислить дату первой покупки каждого пользователя, сгруппируем данные по&nbsp;<code>customer_id</code> и&nbsp;найдем минимальное значение поля <code>order_date</code>. Результат сохраним в&nbsp;переменную <code>first_orders</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/15683789197f08e2fda93b6b708396a8.js"></script>
+
+<p>Видим, что пользовать AA-10315 впервые что-то купил 31&nbsp;марта 2014 года, а&nbsp;пользователь AA-10375&nbsp;&mdash; 21 апреля того&nbsp;же года.</p>
+<p>Зная даты первых покупок, можем строить когорты.</p>
+<h2 id="Строим-когорты"><a href="#Строим-когорты" class="headerlink" title="Строим когорты"></a>Строим когорты</h2><p>Итак, когортами будем считать людей, сделавших первую покупку в&nbsp;тот или иной день. Метрики для отслеживания&nbsp;&mdash; количество заказов и&nbsp;выручка.</p>
+<p>План такой: сначала добавим дату первой покупки пользователей в&nbsp;таблицу с&nbsp;заказами, затем сгруппируем по&nbsp;датам первой покупки и&nbsp;заказа и, наконец, посчитаем выручку и&nbsp;количество заказов каждой когорты.</p>
+<p>Приступим. Добавим дату первой покупки с&nbsp;помощью метода <code>merge()</code> и&nbsp;сохраним получившийся датафрейм в&nbsp;переменную <code>orders_merged</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/a0a3ad5229ab82dfc7aa900fd52a1389.js"></script>
+
+<p>В&nbsp;строках получившегося датафрейма всё еще покупки, но&nbsp;теперь в&nbsp;таблице появилась новая колонка: дата первой покупки пользователя.</p>
+<p>Агрегируем по&nbsp;дате первой покупки и&nbsp;посчитаем нужные показатели:</p>
+<script src="https://gist.github.com/kulichevskiy/a63ad68004c7181459117e10e7685a8c.js"></script>
+
+<p>Видим, что клиенты от&nbsp;3 января 2014 года, всего сделали 9 заказов на&nbsp;$1050.6. Посмотрим, когда были эти заказы. Для этого добавим к&nbsp;группировке колонку <code>order_date</code>.</p>
+<script src="https://gist.github.com/kulichevskiy/d6622170915e1c0bb3cf312ce3c33c90.js"></script>
+
+<p>Ага, первый заказ этой когорты был 3 январи на&nbsp;$16. В&nbsp;следующий раз клиент вернулся почти год спустя и&nbsp;купил что-то ещё, в&nbsp;этот раз на&nbsp;$153. Следующая покупка была уже в&nbsp;апреле 2015 и&nbsp;так далее.</p>
+<p>Когорты готовы, теперь решим задачу.</p>
+<h2 id="Решаем-задачу"><a href="#Решаем-задачу" class="headerlink" title="Решаем задачу"></a>Решаем задачу</h2><p>Напомню, что мы&nbsp;хотим посчитать, сколько в&nbsp;среднем заказов и&nbsp;выручки приносят клиенты в&nbsp;течение года, после первой покупки.</p>
+<p>Мы&nbsp;посчитали, сколько магазин заработал с&nbsp;каждой когорты за&nbsp;всё время. Теперь осталось уточнить метрику: посчитать показатели за&nbsp;первый год жизни когорты. Посчитаем, сколько дней прошло между первой покупкой и&nbsp;последующим заказом, и&nbsp;отфильтруем те, что случились после 365 дней.</p>
+<p>Чтобы посчитать количество дней между заказами, вычтем из&nbsp;колонки <code>order_date</code> столбец <code>first_order</code></p>
+<script src="https://gist.github.com/kulichevskiy/8bbddaf50f03229dd679464096cc5222.js"></script>
+
+<p>Вуаля. Видим, что, например, заказ <code>131884</code> случился 455 дней спустя первой покупки. <code>455 days</code>&nbsp;&mdash; это тип данных под названием &laquo;Timedelta&raquo;, его специально придумали, чтобы показывать временные промежутки.</p>
+<p>Чтобы отфильтровать заказы в&nbsp;первый год, добавим условие <code>&lt;= &#39;365 days&#39;</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/8f6fab19b19d71618d3e0caecc62c0c7.js"></script>
+
+<p>Сохраним результат в&nbsp;переменную <code>year_1_filter</code>, а&nbsp;затем отфильтруем ненужные заказы из&nbsp;когортного отчета и&nbsp;сохраним результат в&nbsp;переменную <code>year_1_orders</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/254ca799d9002cef15f819c709a1b097.js"></script>
+
+<p>В&nbsp;датафрейме остались только заказы, сделанные когортами в&nbsp;течение года с&nbsp;первой покупки. Теперь сгруппируем заказы по&nbsp;дате первой покупки и&nbsp;посчитаем нужные метрики. Результат сохраним в&nbsp;переменную <code>cohorts</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/5ddefa4d38848a2ac4d4066ffdcda393.js"></script>
+
+<p>Последний шаг: посчитаем, сколько в&nbsp;среднем заказов и&nbsp;приносят клиенты в&nbsp;течение первого года. Для этого сначала просуммируем показатели каждой когорты, а&nbsp;затем усредним значения методом <code>mean()</code>:</p>
+<script src="https://gist.github.com/kulichevskiy/adec10491e67999ff692f1ff2fe8ef6d.js"></script>
+
+<p>Готово! В&nbsp;среднем за&nbsp;первый год когорты делают по&nbsp;4 заказа и&nbsp;приносят по&nbsp;$1949&nbsp;долларов.</p>
+<p>Есть много способов улучшить решение, например сгруппировать дневные когорты в&nbsp;недельные или месячные, визуализировать отчет в&nbsp;таблице или на&nbsp;графике. Наконец, интересно разбить когорты по&nbsp;каким-то признакам, например, отделить частных покупателей от&nbsp;компаний&nbsp;&mdash; наверняка их&nbsp;показатели существенно отличаются.</p>
+<p>Но&nbsp;об&nbsp;этом в&nbsp;следующих сериях. Подписывайтесь на&nbsp;<a href="https://t.me/kulichevskiy" target="_blank" rel="noopener">канал</a>, чтобы не&nbsp;пропустить. Ну&nbsp;и&nbsp;да, <a href="https://brainwashing.pro/marketing-python" target="_blank" rel="noopener">приходите учиться на&nbsp;курс</a>!</p>
+<p>Адиос!</p>
+<p><em>Cпасибо Наташе Асаул за&nbsp;то, что помогла отредактировать статью.</em></p>
+</div></div></div><div class="container container_margin"><div class="row"><div class="col-md-8 col-sm-12"><h1><a href="/blog/pandas/">Аналитикам: большая шпаргалка по Pandas</a></h1><blockquote>
 <p>Привет. Я&nbsp;задумывал эту заметку для студентов курса <a href="https://digitalgod.be/rockstar" target="_blank" rel="noopener">Digital Rockstar</a>, на&nbsp;котором мы&nbsp;учим маркетологов автоматизировать свою работу с&nbsp;помощью программирования, но&nbsp;решил поделиться шпаргалкой по&nbsp;Pandas со&nbsp;всеми. Я&nbsp;ожидаю, что читатель умеет писать код на&nbsp;Python хотя&nbsp;бы на&nbsp;минимальном уровне, знает, что такое списки, словари, циклы и&nbsp;функции.</p>
 </blockquote>
 <ol>
