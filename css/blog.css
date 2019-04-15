@@ -620,16 +620,9 @@ $green:     #859900;*/
   margin-bottom: 1rem;
 }
 
-.blog span.code {
+.blog span.code, p code  {
   font-family: 'Anonymous Pro', monospace;
 }
-
-body gist table.highlight .pl-s1  /* constant */
-{
-  color:
-}
-
-
 
 
 
@@ -641,7 +634,7 @@ span.green, span.keyword, body .gist table.highlight .pl-k {
   color: #859900;
 }
 
-span.cyan, span.string, body .gist table.highlight .pl-s1, body .gist table.highlight .pl-s, body .gist table.highlight .pl-pds {
+span.cyan, span.string, body .gist table.highlight .pl-s1, body .gist table.highlight .pl-s, body .gist table.highlight .pl-pds{
   color: #2aa198;
 }
 
