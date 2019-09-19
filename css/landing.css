@@ -317,6 +317,7 @@ img {
 }
 
 .h3, h3 {
+  line-height: 1.3;
   font-size: 35px;
   padding: 10px 0 20px 0;
   font-family: kazimir-regular, Arial, Helvetica, sans-serif;
